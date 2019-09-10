@@ -1,5 +1,4 @@
 var routes = require('express').Router();
-var db = require('../dao/db');
 var bookDao = require('../dao/bookDao');
 
 routes.get('/book',function(req,res){
@@ -17,10 +16,11 @@ routes.post('/book', function(req, res){
       res.status(400);
       res.send('Add Book Failed!');
     }
-    res.status(201);
-    res.send('Add Book Successful!');
+    else{
+      res.status(201);
+      res.send('Add Book Successful!');
+    }
   });
-
 });
 
 routes.delete('/book/:id', function(req, res){
@@ -28,8 +28,9 @@ routes.delete('/book/:id', function(req, res){
     if(err){
       res.status(400);
       res.send('Delete Book Failed!');
-    }
-    res.send('Delete Book Successful!');
+    }else{
+      res.send('Delete Book Successful!');
+    } 
   });
 });
 
