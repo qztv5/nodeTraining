@@ -23,6 +23,25 @@ routes.post('/book', function(req, res){
   });
 });
 
+
+
+routes.put("/book/:id", function(req,res){
+  var book = req.body;
+  book.bookId = req.params.id;
+  bookDao.updateBook(book, function(err, result){
+    if(err){
+      res.status(400)
+      res.send('Update Book Failed!')
+    }
+    else{
+    res.status(201);
+    res.json({'UPDATED': book});
+    }
+  });
+});
+
+
+
 routes.delete('/book/:id', function(req, res){
   bookDao.removeBook(req.params.id, function(err, result){
     if(err){

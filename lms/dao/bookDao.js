@@ -10,8 +10,8 @@ exports.addBook = function (book, cb) {
   db.beginTransaction(function (err) {
     if (err) cb(err, null);
 
-    db.query('insert into library.tbl_book(bookId, title,authorId,pubId) values(?,?,?,?)', [book.bookId, book.title, 
-      book.authorId,book.pubId], function (err, res) {
+    db.query('insert into library.tbl_book(bookId, title,authId,pubId) values(?,?,?,?)', [book.bookId, book.title, 
+      book.authId,book.pubId], function (err, res) {
       if (err) {
         db.rollback(function (err, res) {
           cb(err, res);
