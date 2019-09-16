@@ -1,10 +1,11 @@
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
-    host     : '70.183.1.146',
+    host     : 'library.cbaxpbusjdjz.us-east-1.rds.amazonaws.com',
     user     : process.env.DBUN,
     password : process.env.DBPASS,
-    database : 'library'
+    database : 'library',
+    port     : 3305
 });
 
 module.exports = connection;
